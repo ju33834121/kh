@@ -1,0 +1,136 @@
+package home_MegaCoffee;
+
+import java.util.*;
+
+
+class Coffee {
+	String coffee;
+	int price;
+
+
+
+
+	@Override
+	public String toString() {
+		return coffee + "────────" + price + "원";
+	}
+}
+
+class Menu {
+
+	String[] coffee = {"ICE아메리카노", "HOT아메리카노", "카페모카", "카라멜마끼아또"};
+	int[] price = {2000, 1500, 3500, 3800};
+	String[] smoothies = {"요거트스무디", "블루베리스무디"};
+	int[] price1 = {3000, 3500};
+	String[] sideMenu = {"치즈케이크", "초코케이크"};
+	int[] price2 = {4000, 3500};
+
+}
+
+public class Test {
+	public static void main(String[] args) {
+
+		Menu m = new Menu();
+		Scanner scan = new Scanner(System.in);
+
+		int sum = 0;
+
+		//생성자 만들기
+		Coffee c = new Coffee();
+		Coffee c1 = new Coffee();
+		Coffee c2 = new Coffee();
+
+
+		ArrayList<Coffee> list = new ArrayList<>();
+		int count = 0;
+
+		
+		System.out.println("──────────── MegaCoffee ────────────");
+		System.out.println("                                    ");
+
+		while(true) {
+			System.out.println("1. 주문하기  2. 주문내역서  3. 프로그램종료");
+			int order = scan.nextInt();
+			
+			System.out.println("──────────── 주문하기 ────────────");
+			System.out.println("1. 커피  2. 스무디  3. 사이드메뉴");
+			if(order == 1) {
+				
+				int a = scan.nextInt();
+
+				if(a == 1) {
+					System.out.println("─────────────────────────────────────────────────");
+					System.out.println("1.ICE아메리카노   2.HOT아메리카노  3.카페모카  4.카라멜마끼아또");
+					System.out.println("─────────────────────────────────────────────────");
+
+					int b = scan.nextInt();
+
+					for(int i = 1; i<=m.coffee.length; i++) {
+						if(i == b) {
+							System.out.println(b + ". " + m.coffee[b-1] + " 선택하셨습니다.");
+							sum += m.price[b-1];
+							c.coffee = m.coffee[b-1];
+							c.price = m.price[b-1];
+							list.add(c);
+						}
+					}
+
+				}//	if(a == 1) {
+
+				if(a == 2) {
+					System.out.println("1. 요거트스무디  2. 블루베리스무디");
+
+					int b = scan.nextInt();
+
+					for(int i = 1; i<=m.coffee.length; i++) {
+						if(i == b) {
+							System.out.println(b + ". " + m.smoothies[b-1] + " 선택하셨습니다.");
+							sum += m.price1[b-1];
+							c1.coffee = m.smoothies[b-1];
+							c1.price = m.price1[b-1];
+							list.add(c1);
+						}
+					}
+				}//if(a == 2) {
+
+				if(a == 3) {
+					System.out.println("1. 치즈케이크  2. 초코케이크");
+
+					int b = scan.nextInt();
+
+					for(int i = 1; i<=m.coffee.length; i++) {
+						if(i == b) {
+							System.out.println(b + ". " + m.sideMenu[b-1] + " 선택하셨습니다.");
+							sum += m.price2[b-1];
+							c2.coffee = m.sideMenu[b-1];
+							c2.price = m.price2[b-1];
+							list.add(c2);
+						}
+					}
+				}//if(a == 3) {
+
+			}
+
+			if(order == 2) {
+
+				System.out.println(list.get(0).toString());
+				//				System.out.println(list.get(1).toString());
+				//				System.out.println(list.get(2).toString());
+				//				for(int i = 1; i<=count; i++) {
+				//					if(i == count) {
+				//						System.out.println(list.get(i-1).toString()+ " " + count + "개");
+				//					}
+				//				}
+				System.out.println("총 결제 금액 : " + sum);
+			}
+
+			if(order == 3) {
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			}
+
+		} // while(true) {
+
+	}
+
+}
