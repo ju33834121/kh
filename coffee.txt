@@ -40,22 +40,24 @@ public class Test {
 		Coffee c1 = new Coffee();
 		Coffee c2 = new Coffee();
 
-
 		ArrayList<Coffee> list = new ArrayList<>();
-		int count = 0;
-
 		
+
+
 		System.out.println("──────────── MegaCoffee ────────────");
-		System.out.println("                                    ");
+		System.out.println();
 
 		while(true) {
+			System.out.println("────────────────────────────────────");
 			System.out.println("1. 주문하기  2. 주문내역서  3. 프로그램종료");
+			System.out.println("────────────────────────────────────");
 			int order = scan.nextInt();
+
 			
-			System.out.println("──────────── 주문하기 ────────────");
-			System.out.println("1. 커피  2. 스무디  3. 사이드메뉴");
 			if(order == 1) {
-				
+				System.out.println("────────────────────────────────");
+				System.out.println("1. 커피  2. 스무디  3. 사이드메뉴");
+				System.out.println("────────────────────────────────");
 				int a = scan.nextInt();
 
 				if(a == 1) {
@@ -67,6 +69,7 @@ public class Test {
 
 					for(int i = 1; i<=m.coffee.length; i++) {
 						if(i == b) {
+							System.out.println();
 							System.out.println(b + ". " + m.coffee[b-1] + " 선택하셨습니다.");
 							sum += m.price[b-1];
 							c.coffee = m.coffee[b-1];
@@ -78,8 +81,9 @@ public class Test {
 				}//	if(a == 1) {
 
 				if(a == 2) {
+					System.out.println("────────────────────────────────────");
 					System.out.println("1. 요거트스무디  2. 블루베리스무디");
-
+					System.out.println("────────────────────────────────────");
 					int b = scan.nextInt();
 
 					for(int i = 1; i<=m.coffee.length; i++) {
@@ -94,12 +98,14 @@ public class Test {
 				}//if(a == 2) {
 
 				if(a == 3) {
+					System.out.println("────────────────────────────────────");
 					System.out.println("1. 치즈케이크  2. 초코케이크");
-
+					System.out.println("────────────────────────────────────");
 					int b = scan.nextInt();
 
 					for(int i = 1; i<=m.coffee.length; i++) {
 						if(i == b) {
+							System.out.println();
 							System.out.println(b + ". " + m.sideMenu[b-1] + " 선택하셨습니다.");
 							sum += m.price2[b-1];
 							c2.coffee = m.sideMenu[b-1];
@@ -113,7 +119,7 @@ public class Test {
 
 			if(order == 2) {
 
-				System.out.println(list.get(0).toString());
+				//				System.out.println(list.get(0).toString());
 				//				System.out.println(list.get(1).toString());
 				//				System.out.println(list.get(2).toString());
 				//				for(int i = 1; i<=count; i++) {
@@ -121,7 +127,10 @@ public class Test {
 				//						System.out.println(list.get(i-1).toString()+ " " + count + "개");
 				//					}
 				//				}
-				System.out.println("총 결제 금액 : " + sum);
+				System.out.println();
+				System.out.println("──────────────────────");
+				System.out.println("총 결제 금액 : " + sum +"원");
+				System.out.println("──────────────────────");
 			}
 
 			if(order == 3) {
@@ -129,8 +138,41 @@ public class Test {
 				break;
 			}
 
-		} // while(true) {
+			HashMap map = new HashMap();
+			map.put("myID", "1234");
+			map.put("01033834121", "01033834121");
+			map.put("yeon", "1234");
 
+			int count = 0;
+			System.out.println("────────────────────────────────────");
+			System.out.println("회원적립을 하시겠습니까?  1. 적립  2. 계산하기");
+			System.out.println("────────────────────────────────────");
+			int memberShip = scan.nextInt();
+
+			if(memberShip == 1) {
+				System.out.print("핸드폰번호 : ");
+				String id = scan.nextLine().trim();
+				System.out.print("password : ");
+				String password = scan.next().trim();
+				System.out.println();
+
+				if(!map.containsKey(id)) { 
+					System.out.println("입력하신 회원정보가 없습니다. 다시 입력해주세요.");
+					continue;
+				}else {
+					if(!(map.get(id)).equals(password)) {
+						System.out.println("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+					}else {
+						System.out.println("회원적립 되었습니다.");
+						count++;
+						break;
+					}
+				}
+				if(memberShip == 2) {
+					System.out.println("계산서");
+				}
+			} // while(true) {
+
+		}
 	}
-
 }
